@@ -92,6 +92,19 @@ MariaDB [db1]> show tables;
 | dummy_table_two   |
 +-------------------+
 3 rows in set (0.00 sec)
+
+MariaDB [db1]> SELECT * FROM dummy_table_one;
++------+------+-------+
+| col1 | col2 | col3  |
++------+------+-------+
+| one  | two  | three |
+| one  | two  | three |
+| one  | two  | three |
++------+------+-------+
+3 rows in set (0.00 sec)
+
+MariaDB [db1]> insert into dummy_table_one values ('xxx','yyy','zzz');
+ERROR 1142 (42000): INSERT command denied to user 'v-token-db1-ro-rol-Vwq1axBfhZ0mc'@'10.0.1.1' for table 'dummy_table_one'
 ```
 
 Finally all operations against vault are audit logged:
