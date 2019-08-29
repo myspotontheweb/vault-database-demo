@@ -1,6 +1,6 @@
 # vault-database-demo
 
-This demo focuses on how Vault can be used to manage database credentials. It ignores user access controls and how users authenticate against vault. 
+This demo focuses on how Vault can be used to manage database credentials. It ignores how users login and obtain a vault token, it also ignores the setup of access policies controlling which secrets can be retrieved.
 
 ## Quick Start
 
