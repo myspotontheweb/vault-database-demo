@@ -1,5 +1,7 @@
 # vault-database-demo
 
+This demo focuses on how Vault can be used to manage database credentials. It ignores user access controls and how users authenticate against vault. 
+
 ## Quick Start
 
 The following commands will use Docker Compose to launch an instance of Vault and MariaDB locally
