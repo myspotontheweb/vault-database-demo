@@ -4,6 +4,10 @@ This demo focuses on how Vault can be used to manage database credentials. It ig
 
 ## Quick Start
 
+Ensure you have the vault client installed locally
+
+https://www.vaultproject.io/downloads.html
+
 The following commands will use Docker Compose to launch an instance of Vault and MariaDB locally
 
 ```
