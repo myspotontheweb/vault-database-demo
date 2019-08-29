@@ -4,8 +4,10 @@ VAULT_TOKEN=123
 .EXPORT_ALL_VARIABLES:
 
 startup:
-	@docker-compose up -d --build
+	@docker-compose up -d
 
+clean:
+	@docker-compose down -v
 
 # =========================================
 # Configure vault to manage database access
