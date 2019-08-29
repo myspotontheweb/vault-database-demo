@@ -1,0 +1,50 @@
+version: '3.7'
+services:
+
+  # =================================
+  # Vault running in development mode
+  # =================================
+  vault:
+    image: vault:1.2.2
+    cap_add:
+      - IPC_LOCK
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: '123'
+    ports:
+      - 8200:8200
+
+  # ==========================
+  # Locally persisted database
+  # ==========================
+  db:
+    image: mariadb:10.3.12
+    environment:
+      MYSQL_ROOT_PASSWORD: dev
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  # =======================
+  # Database migration tool
+  # =======================
+  flyway:
+    image: flyway/flyway:6.0.0-alpine
+    command: -connectRetries=60 migrate
+    environment:
+      FLYWAY_URL: jdbc:mariadb://db
+      FLYWAY_USER: root
+      FLYWAY_PASSWORD: dev
+      FLYWAY_SCHEMAS: flyway,db1,db2
+    volumes:
+      - ./sql:/flyway/sql
+    depends_on:
+      - db
+
+
+# =====================
+# Docker managed volume
+# =====================
+volumes:
+  dbdata:
+
